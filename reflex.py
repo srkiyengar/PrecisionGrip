@@ -148,21 +148,23 @@ class reflex_sf():
             if ul >= new_position >= ll:
                 return new_position
             else:
+                old_position = new_position
                 if new_position > ul:
                     new_position = ul
                 elif new_position < ll:
                     new_position = ll
-                my_logger.debug('Finger {} new position changed to {}'.format(id,new_position))
+                my_logger.debug('Finger {} set to {} instead of {}'.format(id,new_position,old_position))
                 return new_position
         elif rotation_mode == -1:
            if ll>=new_position >= ul:
                return new_position
            else:
+               old_position = new_position
                if new_position > ll:
                     new_position = ll
                elif new_position < ul:
                     new_position = ul
-               my_logger.debug('Finger {} new position changed to {}'.format(id,new_position))
+               my_logger.debug('Finger {} set to {} instead of {}'.format(id,new_position,old_position))
                return new_position
         else:
             my_logger.debug("Finger{} joint rotation mode: {} unknown",format(rotation_mode))
@@ -310,6 +312,13 @@ class reflex_sf():
             max_position = self.finger[i]["upper_limit"]
             F.append(max_position)
         return F
+
+    def move_to_goal_position(self,gp):
+        for i in range(1,5,1):
+            my_logger.info("Moving  Servo: {} to Goal position: {}".format(i, gp[i]))
+            self.finger[i]["servo"].set_goal_position(gp[i])
+            self.finger[i]["GP"] = gp[i]
+        return
 
 class joy_reflex_controller:
     def __init__(self, my_joy,grabber):

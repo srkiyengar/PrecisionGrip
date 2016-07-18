@@ -36,6 +36,16 @@ class ExtremeProJoystick():
 
 
     def get_axis_displacement_and_grip(self,k):
+        """
+        This function has to get the displacement of the Logitech Extreme #D Joystick axis (there are 4 of which 0 and 1
+        are used to determine servo movement. Axis 0 is used to move servo 4 to change the separation between fingers 1
+        and 2 while Axis 1 displacement determines the aperture of the Reflex (meaning servos 1, 2 and 3 are rotated by the
+        same measure in either directions"
+        :param k is the Axis identifier:
+        :return: is a tuple move, how much, and which direction. The move = 1 means aperture change move = 2 is finger
+        separation. moveby is based on one circle being equal to 4096. This is an offset. The direction determines opening
+        or closing.
+        """
         displacement = self.joystick.get_axis(k)
         move = 0
         move_by = 0
