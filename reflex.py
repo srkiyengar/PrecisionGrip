@@ -314,6 +314,7 @@ class reflex_sf():
         return F
 
     def move_to_goal_position(self,gp):
+        #Should I do the limit check here?
         for i in range(1,5,1):
             my_logger.info("Moving  Servo: {} to Goal position: {}".format(i, gp[i]))
             self.finger[i]["servo"].set_goal_position(gp[i])
