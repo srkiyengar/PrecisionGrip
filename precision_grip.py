@@ -188,12 +188,12 @@ if __name__ == '__main__':
 
     # preparing the two threads that will run
 
-    get_goal_position_thread = threading.Thread(target = update_joy_displacement,args=(my_joy,palm))
-    set_goal_position_thread = threading.Thread(target = move_reflex_to_goal_positions, args=(palm,))
+    #get_goal_position_thread = threading.Thread(target = update_joy_displacement,args=(my_joy,palm))
+    #set_goal_position_thread = threading.Thread(target = move_reflex_to_goal_positions, args=(palm,))
 
 
-    get_goal_position_thread.start()
-    set_goal_position_thread.start()
+    #get_goal_position_thread.start()
+    #set_goal_position_thread.start()
 
 
 
